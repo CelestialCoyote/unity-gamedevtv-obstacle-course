@@ -7,18 +7,30 @@ public class Mover : MonoBehaviour
 {
 	[SerializeField] float moveSpeed = 10.0f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	// Start is called before the first frame update
+	void Start()
+	{
+		PrintGameInstructions();
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
+	// Update is called once per frame
+	void Update()
+	{
+		MovePlayer();
+	}
+
+	void PrintGameInstructions()
+	{
+		Debug.Log("Welcome to the Obstacle Game.");
+		Debug.Log("Move your player with WASD or arrow keys.");
+		Debug.Log("Do not hit the walls!");
+	}
+
+	void MovePlayer()
+	{
 		float xValue = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
 		float zValue = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
 
-        transform.Translate(xValue, 0, zValue);
-    }
+		transform.Translate(xValue, 0, zValue);
+	}
 }
